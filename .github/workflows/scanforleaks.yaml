@@ -40,6 +40,9 @@ jobs:
         AIAPIKEY: ${{ secrets.AIAPIKEY }}
         AIAPIURL: ${{ secrets.AIAPIURL }}
       run: |
+        set -euo pipefail
+        trap 'echo "Error occurred on line $LINENO"' ERR
+        
         echo "Starting per-file secret scan..."
         RESULT=0
 
